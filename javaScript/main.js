@@ -1,5 +1,6 @@
 const imgContainer = document.querySelector('.image-container');
 const loader = document.querySelector('.loader');
+const tweetBtn = document.querySelector('.twitter')
 
 let ready = false;
 let imgLoaded = 0;
@@ -20,6 +21,8 @@ function display (){
         img.setAttribute('src', photo.urls.full);
         img.setAttribute('alt', photo.alt_description);
         img.setAttribute('title', photo.alt_description);
+
+        img.appendChild(tweetBtn)
         // check if loading is complete
         img.addEventListener('load', loaded);
         // put <img> inside <a>, then put both in the imageContainer
@@ -29,7 +32,7 @@ function display (){
 }
 
 // fetching UnsplashApi
-const count = 30;
+const count = 4;
 const key = 'tnnE1zJKeLx-XDDSHPVeL9U82B5GQWWXmQgZBJEEgwE';
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${key}&count=${count}`;
 
@@ -39,6 +42,7 @@ imgLoaded++;
 if (imgLoaded === totalImage){
     ready = true;
     loader.hidden = true;
+    count = 30;
 }
 }
 
